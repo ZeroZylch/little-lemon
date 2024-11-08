@@ -1,11 +1,13 @@
-function TestimonialCard(rating, profilePic, testimonialName, reviewMsg) {
+function TestimonialCard({ rating, profilePic, testimonialName, reviewMsg }) {
     return (
-        <>
-        <h3>{rating} Rating</h3>
-        <img src={profilePic} />
-        <p>{testimonialName}</p>
-        <p>{reviewMsg}</p>
-        </>
+        <div className="TestimonialCard">
+            <h3>{rating} Stars</h3>
+            <div className="Profile">
+                <img src={profilePic} alt={"user-icon"} />
+                <p>{testimonialName}</p>
+            </div>
+            <p>{reviewMsg}</p>
+        </div>
     )
 }
 

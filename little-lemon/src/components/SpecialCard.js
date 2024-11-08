@@ -10,7 +10,7 @@ function SpecialCard({ specialImage, specialTitle, specialPrice, specialText}) {
                     <p><b>{specialPrice}</b></p>
                 </div>
                 <p>{specialText}</p>
-                <button>Order a delivery</button>
+                <button className="DeliveryButton">Order a delivery</button>
             </div>
         </div>
     )

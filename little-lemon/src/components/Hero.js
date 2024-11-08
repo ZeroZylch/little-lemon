@@ -5,7 +5,7 @@ function Hero() {
         <div className="Hero">
             <div className="HeroLeft">
                 <h1>Little Lemon</h1>
-                <h2>Chicago</h2>
+                <h2 style={{ color: '#ffffff' }}>Chicago</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing
                     elit borb galandibap skibidi beeboo babow shabambda
                     clu</p>

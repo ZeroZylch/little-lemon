@@ -12,11 +12,6 @@ h1 {
   line-height: 0.5;
 }
 
-h2 {
-  color: white;
-  line-height: 0.5;
-}
-
 .Highlights h2 {
   color: black;
 }
@@ -94,16 +89,18 @@ button {
 .Highlights {
   margin-top: 4rem;
   justify-content: center;
+  padding-bottom: 25px;
 }
 
 .SpecialsBanner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50vw;
+  width: 60vw;
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 0.5;
 }
 
 .SpecialsList {
@@ -118,7 +115,7 @@ button {
 
 .SpecialCard {
   text-align: left;
-  max-width: 30vw;
+  max-width: 20vw;
   background-color: #ECECEC;
   border-radius: 16px 16px 0 0;
   overflow: visible;
@@ -154,4 +151,43 @@ button {
 
 .SpecialCardText {
   padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.DeliveryButton {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+/* TESTIMONIALS SECTION */
+.Testimonials {
+  display: flex;
+  flex-direction: column;
+  background: #F4CE14;
+  padding-bottom: 25px;
+}
+
+.TestimonialsList {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.TestimonialCard {
+  background-color: #ECECEC;
+  width: 20vw;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.Profile {
+  display: flex;
+  justify-content: center;
+}
+
+.TestimonialCard img {
+  max-width: 50px;
+  margin: 0 10px 0 20px;
+
 }
