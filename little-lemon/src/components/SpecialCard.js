@@ -1,11 +1,18 @@
-function SpecialCard(specialImage, specialTitle, specialText) {
+function SpecialCard({ specialImage, specialTitle, specialPrice, specialText}) {
     return (
-        <>
-            <img src={specialImage} />
-            <h4>{specialTitle}</h4>
-            <p>{specialText}</p>
-            <button>Order a delivery</button>
-        </>
+        <div className="SpecialCard">
+            <div className="SpecialImage">
+                <img src={specialImage} alt={specialTitle} />
+            </div>
+            <div className="SpecialCardText">
+                <div className="SpecialHeader">
+                    <h4>{specialTitle}</h4>
+                    <p><b>{specialPrice}</b></p>
+                </div>
+                <p>{specialText}</p>
+                <button>Order a delivery</button>
+            </div>
+        </div>
     )
 }
 

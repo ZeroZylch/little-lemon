@@ -1,15 +1,20 @@
+import logo1 from '../assets/Logo.svg';
+import burgerIcon from '../assets/🦆 icon _hamburger menu_.svg';
+
 function Header() {
     return(
-        <header>
-            <img />
+        <header className="Header">
+            <img src={logo1} alt="Little Lemon logo" />
             <nav>
-                <ul>
-                    <li>Home</li>
+                <div className="burger">
+                    <img src={burgerIcon} alt="burger icon" />
+                </div>
+                <ul className="nav-links">
                     <li>About</li>
                     <li>Menu</li>
                     <li>Reservations</li>
                     <li>Order Online</li>
-                    <li>Login</li>
+                    <li>Log In</li>
                 </ul>
             </nav>
         </header>
