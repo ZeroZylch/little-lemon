@@ -1,7 +1,10 @@
+import chefs1 from "../assets/Mario and Adrian A.jpg";
+import chefs2 from "../assets/Mario and Adrian B.jpg";
+
 function About() {
     return (
-        <>
-            <div>
+        <div className="About">
+            <div className="AboutLeft">
                 <h1>Little Lemon</h1>
                 <h2>Chicago</h2>
                 <p>
@@ -15,11 +18,11 @@ function About() {
                 Suspendisse commodo libero non nisl convallis tristique.
                 </p>
             </div>
-            <div>
-                <img />
-                <img />
+            <div className="AboutRight">
+                <img className="AboutImage img1" src={chefs1} alt="Chefs Mario and Adrian" />
+                <img className="AboutImage img2" src={chefs2} alt="Chefs Mario and Adrian" />
             </div>
-        </>
+        </div>
     )
 }
 
