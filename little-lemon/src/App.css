@@ -47,18 +47,6 @@ button {
   font-weight: bold;
 }
 
-@media screen and (min-width: 768px) {
-  .burger {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-}
-
 /* HERO SECTION */
 
 .Hero {
@@ -176,9 +164,14 @@ button {
 
 .TestimonialCard {
   background-color: #ECECEC;
-  width: 20vw;
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   border-radius: 16px;
+  max-width: 150px;
+}
+
+.TestimonialSection {
+  display: flex;
+  gap: 20px;
 }
 
 .Profile {
@@ -188,6 +181,29 @@ button {
 
 .TestimonialCard img {
   max-width: 50px;
-  margin: 0 10px 0 20px;
+  margin: 0 10px 0 10px;
+}
 
+@media screen and (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+
+  .TestimonialsList {
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav-links {
+    display: none;
+  }
+
+  .TestimonialsList {
+    flex-wrap: wrap;
+  }
+
+  .TestimonialCard {
+    
+  }
 }
