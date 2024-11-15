@@ -76,6 +76,33 @@ button {
   margin: 40px 0 0 50px;
 }
 
+/* RESERVE SECTION */
+
+.Reserve {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  line-height: 100%;
+  text-align: left;
+  background-color: #495E57;
+  padding: 20px 0 20px 30vw;
+}
+
+.Reserve p {
+  color: white;
+}
+
+.ReserveImage {
+  position: relative;
+}
+
+.ReserveImage img {
+  height: 150px;
+  object-fit: cover;
+  width: 100%;
+}
+
 /* HIGHLIGHTS SECTION */
 
 .Highlights {
@@ -233,6 +260,29 @@ button {
   top: 10px;
 }
 
+/* FOOTER SECTION */
+
+.Footer {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  line-height: 100%;
+  margin-top: 30px;
+  background-color: #495E57;
+  color: white;
+}
+
+.Footer img {
+  margin-top: 60px;
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.FooterSection {
+  padding: 0 20px 0 20px;
+}
 
 @media screen and (min-width: 768px) {
   .burger {
@@ -251,9 +301,5 @@ button {
 
   .TestimonialsList {
     flex-wrap: wrap;
-  }
-
-  .TestimonialCard {
-    
   }
 }

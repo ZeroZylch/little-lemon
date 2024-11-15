@@ -1,5 +1,6 @@
 import logo1 from '../assets/Logo.svg';
 import burgerIcon from '../assets/🦆 icon _hamburger menu_.svg';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function Header() {
     return(

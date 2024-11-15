@@ -3,7 +3,7 @@ import special1 from '../assets/greek salad.jpg';
 import special2 from '../assets/bruschetta.svg';
 import special3 from '../assets/lemon dessert.jpg';
 
-function Highlights() {
+export default function Highlights() {
     return (
         <div className="Highlights">
             <div className="SpecialsBanner">
@@ -33,5 +33,3 @@ function Highlights() {
         </div>
     )
 }
-
-export default Highlights;

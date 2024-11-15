@@ -1,29 +1,32 @@
+import logo from '../assets/Logo .svg';
+import { Link } from 'react-router-dom';
+
 function Footer() {
     return (
-        <footer>
+        <footer className="Footer">
             <div>
-                <img />
+                <img src={logo} alt="Little Lemon logo" />
             </div>
-            <div>
-                <h3>Doormat Navigation</h3>
+            <div className="FooterSection">
                 <nav>
                     <ul>
-                        <li>Home</li>
+                        <li><h3>Doormat Navigation</h3></li>
+                        <li><Link to="/">Home</Link></li>
                         <li>About</li>
                         <li>Menu</li>
-                        <li>Reservations</li>
+                        <li><Link to="/reserve">Reservations</Link></li>
                         <li>Order Online</li>
                         <li>Login</li>
                     </ul>
                 </nav>
             </div>
-            <div>
+            <div className="FooterSection">
                 <h3>Contact</h3>
                 <p>Address</p>
                 <p>Phone number</p>
                 <p>Email</p>
             </div>
-            <div>
+            <div className="FooterSection">
                 <h3>Social media links</h3>
             </div>
         </footer>
