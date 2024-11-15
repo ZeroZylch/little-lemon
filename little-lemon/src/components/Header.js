@@ -1,11 +1,13 @@
 import logo1 from '../assets/Logo.svg';
 import burgerIcon from '../assets/🦆 icon _hamburger menu_.svg';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Header() {
+export default function Header() {
     return(
         <header className="Header">
-            <img src={logo1} alt="Little Lemon logo" />
+            <Link to="/">
+                <img src={logo1} alt="Little Lemon logo" />
+            </Link>
             <nav>
                 <div className="burger">
                     <img src={burgerIcon} alt="burger icon" />
@@ -13,7 +15,7 @@ function Header() {
                 <ul className="nav-links">
                     <li>About</li>
                     <li>Menu</li>
-                    <li>Reservations</li>
+                    <li><Link to="/bookingform">Reservations</Link></li>
                     <li>Order Online</li>
                     <li>Log In</li>
                 </ul>
@@ -21,5 +23,3 @@ function Header() {
         </header>
     )
 }
-
-export default Header;

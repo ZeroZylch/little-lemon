@@ -1,18 +1,30 @@
 import restaurant from "../assets/restaurant.jpg";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
-export default function Reserve() {
-    const [guests, setGuests] = useState("");
-    const [occasion, setOccasion] = useState("default");
-    const [date, setDate] = useState("");
-    const [availableTimes, setAvailableTimes] = useState([
+function availableTimesReducer(state, action) {
+    switch (action.type) {
+        case 'REMOVE_TIME':
+            return state.filter(time => time !== action.payload);
+        default:
+            throw new Error(`Unknown action type: ${action.type}`);
+    }
+}
+
+export default function BookingForm() {
+    const initialTimes = [
         '17:00 PM',
         '18:00 PM',
         '19:00 PM',
         '20:00 PM',
         '21:00 PM',
         '22:00 PM',
-    ]);
+    ];
+
+    const [availableTimes, dispatch] = useReducer(availableTimesReducer, initialTimes);
+
+    const [guests, setGuests] = useState("");
+    const [occasion, setOccasion] = useState("default");
+    const [date, setDate] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -30,6 +42,8 @@ export default function Reserve() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        const selectedTime = e.target['res-time'].value;
+        dispatch({ type: 'REMOVE_TIME', payload: selectedTime });
         alert("Reservation complete!");
         clearForm();
     }
@@ -44,9 +58,10 @@ export default function Reserve() {
                 <img src={restaurant} alt="Little Lemon restaurant" />
             </div>
             <div>
+                <h2>General Information</h2>
                 <form onSubmit={handleSubmit}>
                     {/* Number of Guests */}
-                    <label for="guests"><h2>Number of Guests<sup>*</sup></h2></label>
+                    <label for="guests"><h3>Number of Guests<sup>*</sup></h3></label>
                     <input
                         type="number"
                         id="guests"
@@ -61,7 +76,7 @@ export default function Reserve() {
                         required
                     />
                     {/* Occasion */}
-                    <label for="occasion"><h2>Occasion (Optional)</h2></label>
+                    <label for="occasion"><h3>Occasion (Optional)</h3></label>
                     <select
                         id="occasion"
                         name="occasion"
@@ -76,7 +91,7 @@ export default function Reserve() {
                         <option value="engagement">Engagement</option>
                     </select>
                     {/* Date */}
-                    <label for="res-date"><h2>Choose date<sup>*</sup></h2></label>
+                    <label for="res-date"><h3>Choose date<sup>*</sup></h3></label>
                     <input
                         type="date"
                         id="res-date"
@@ -88,10 +103,11 @@ export default function Reserve() {
                         required
                     />
                     {/* Time */}
-                    <label for="res-time"><h2>Choose time<sup>*</sup></h2></label>
+                    <label for="res-time"><h3>Choose time<sup>*</sup></h3></label>
                     <select
                         id="res-time"
                         name="res-time"
+                        required
                     >
                         {availableTimes.map((time, index) => (
                             <option key={index} value={time}>
