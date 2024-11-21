@@ -1,27 +1,8 @@
-import restaurant from "../assets/restaurant.jpg";
-import { useState, useReducer } from "react";
+import restaurant from '../assets/restaurant.jpg';
+import { useState } from 'react';
+import { submitAPI, fetchAPI } from '../api/Api.js';
 
-function availableTimesReducer(state, action) {
-    switch (action.type) {
-        case 'REMOVE_TIME':
-            return state.filter(time => time !== action.payload);
-        default:
-            throw new Error(`Unknown action type: ${action.type}`);
-    }
-}
-
-export default function BookingForm() {
-    const initialTimes = [
-        '17:00 PM',
-        '18:00 PM',
-        '19:00 PM',
-        '20:00 PM',
-        '21:00 PM',
-        '22:00 PM',
-    ];
-
-    const [availableTimes, dispatch] = useReducer(availableTimesReducer, initialTimes);
-
+export default function BookingForm({ availableTimes, dispatch }) {
     const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("default");
     const [date, setDate] = useState("");
@@ -30,6 +11,7 @@ export default function BookingForm() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [diet, setDiet] = useState("");
+
     const clearForm = () => {
         setGuests("");
         setOccasion("default");
@@ -39,15 +21,36 @@ export default function BookingForm() {
         setEmail("");
         setPhone("");
         setDiet("");
-    }
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         const selectedTime = e.target['res-time'].value;
-        dispatch({ type: 'REMOVE_TIME', payload: selectedTime });
-        alert("Reservation complete!");
-        clearForm();
-    }
+        const formData = {
+            date,
+            time: selectedTime,
+            guests,
+            occasion,
+            firstName,
+            lastName,
+            email,
+            phone,
+            diet,
+        };
 
+        const isSubmitted = submitAPI(formData);
+        if (isSubmitted) {
+            alert("Reservation complete!");
+            dispatch({ type: 'REMOVE_TIME', payload: { date, time: selectedTime } });
+            clearForm();
+        } else {
+            alert("Error submitting the reservation. Please try again.");
+        }
+    };
+    const handleDateChange = (e) => {
+        const selectedDate = new Date(e.target.value);
+        setDate(e.target.value);
+        dispatch({ type: 'SET_TIMES', payload: fetchAPI(selectedDate) });
+    };
     return (
         <>
             <div className="Reserve">
@@ -61,12 +64,12 @@ export default function BookingForm() {
                 <h2>General Information</h2>
                 <form onSubmit={handleSubmit}>
                     {/* Number of Guests */}
-                    <label for="guests"><h3>Number of Guests<sup>*</sup></h3></label>
+                    <label htmlFor="guests"><h3>Number of Guests<sup>*</sup></h3></label>
                     <input
                         type="number"
                         id="guests"
                         name="guests"
-                        placeholder="1"
+                        placeholder="0"
                         min="1"
                         max="10"
                         value={guests}
@@ -76,7 +79,7 @@ export default function BookingForm() {
                         required
                     />
                     {/* Occasion */}
-                    <label for="occasion"><h3>Occasion (Optional)</h3></label>
+                    <label htmlFor="occasion"><h3>Occasion (Optional)</h3></label>
                     <select
                         id="occasion"
                         name="occasion"
@@ -91,25 +94,23 @@ export default function BookingForm() {
                         <option value="engagement">Engagement</option>
                     </select>
                     {/* Date */}
-                    <label for="res-date"><h3>Choose date<sup>*</sup></h3></label>
+                    <label htmlFor="res-date"><h3>Choose date<sup>*</sup></h3></label>
                     <input
                         type="date"
                         id="res-date"
                         name="res-date"
                         value={date}
-                        onChange={(e) => {
-                            setDate(e.target.value);
-                        }}
+                        onChange={handleDateChange}
                         required
                     />
                     {/* Time */}
-                    <label for="res-time"><h3>Choose time<sup>*</sup></h3></label>
+                    <label htmlFor="res-time"><h3>Choose time<sup>*</sup></h3></label>
                     <select
                         id="res-time"
                         name="res-time"
                         required
                     >
-                        {availableTimes.map((time, index) => (
+                        {(availableTimes || []).map((time, index) => (
                             <option key={index} value={time}>
                                 {time}
                             </option>
@@ -117,7 +118,7 @@ export default function BookingForm() {
                     </select>
                     {/* First Name */}
                     <h2>Customer Information</h2>
-                    <label for="fName"><h3>First Name<sup>*</sup></h3></label>
+                    <label htmlFor="fName"><h3>First Name<sup>*</sup></h3></label>
                     <input
                         type="text"
                         id="fName"
@@ -129,7 +130,7 @@ export default function BookingForm() {
                         required
                     />
                     {/* Last Name */}
-                    <label for="lName"><h3>Last Name<sup>*</sup></h3></label>
+                    <label htmlFor="lName"><h3>Last Name<sup>*</sup></h3></label>
                     <input
                         type="text"
                         id="lName"
@@ -141,7 +142,7 @@ export default function BookingForm() {
                         required
                     />
                     {/* Email */}
-                    <label for="email"><h3>Email<sup>*</sup></h3></label>
+                    <label htmlFor="email"><h3>Email<sup>*</sup></h3></label>
                     <input
                         type="email"
                         id="email"
@@ -153,7 +154,7 @@ export default function BookingForm() {
                         required
                     />
                     {/* Phone Number */}
-                    <label for="phone"><h3>Phone Number (Optional)</h3></label>
+                    <label htmlFor="phone"><h3>Phone Number (Optional)</h3></label>
                     <input
                         type="tel"
                         id="phone"
@@ -165,7 +166,7 @@ export default function BookingForm() {
                         }}
                     />
                     {/* Dietary Restrictions */}
-                    <label for="dietaryrestrictions"><h3>Dietary Restrictions</h3></label>
+                    <label htmlFor="dietaryrestrictions"><h3>Dietary Restrictions</h3></label>
                     <input
                         type="text"
                         id="dietaryrestrictions"

@@ -4,13 +4,45 @@ import Testimonials from './Testimonials.js';
 import About from './About.js';
 import restaurantFood from '../assets/restaurantfood.jpg';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useReducer } from 'react';
+import { fetchAPI } from '../api/Api.js';
+
+// Initialize available times
+function initializeTimes() {
+    const today = new Date();
+    return fetchAPI(today) || []; // Ensure it always returns an array
+}
+
+// Reducer function
+function updateTimes(state, action) {
+    switch (action.type) {
+        case 'SET_TIMES':
+            return action.payload || []; // Replace with new available times
+        case 'REMOVE_TIME':
+            const { time } = action.payload;
+            return state.filter((t) => t !== time); // Remove selected time
+        default:
+            throw new Error(`Unknown action type: ${action.type}`);
+    }
+}
 
 export default function Main() {
     const location = useLocation();
+
+    // Using useReducer for managing availableTimes
+    const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
     return (
         <main>
             <Routes>
-                <Route path="/bookingform" element={<BookingForm />} />
+                <Route
+                    path="/bookingform"
+                    element={
+                        <BookingForm
+                            availableTimes={availableTimes}
+                            dispatch={dispatch}
+                        />
+                    }
+                />
             </Routes>
             {location.pathname !== '/bookingform' && (
                 <>
