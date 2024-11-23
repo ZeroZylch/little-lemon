@@ -284,19 +284,60 @@ button {
   padding: 0 20px 0 20px;
 }
 
-a:link {
+nav a:link {
   color: black;
+  text-decoration: none;
 }
 
-a:visited {
+nav a:visited {
+  color: #495E57;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #F4CE14;
+  text-decoration: underline;
+}
+
+nav a:active {
   color: #495E57;
 }
 
-a:hover {
+button a:link {
+  color: black;
+  text-decoration: none;
+}
+
+button a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+button a:hover {
+  color: #495E57;
+  text-decoration: underline;
+}
+
+button a:active {
   color: darkred;
 }
 
-a:active {
+.FooterNav a:link {
+  color: black;
+  text-decoration: none;
+}
+
+.FooterNav a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.FooterNav a:hover {
+  color: #F4CE14;
+  text-decoration: underline;
+}
+
+.FooterNav a:active {
   color: #495E57;
 }
 

@@ -84,6 +84,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                             setGuests(e.target.value);
                         }}
                         required
+                        aria-required="true"
                     />
                     {/* Occasion */}
                     <label htmlFor="occasion"><h3>Occasion (Optional)</h3></label>
@@ -109,6 +110,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                         value={date}
                         onChange={handleDateChange}
                         required
+                        aria-required="true"
                     />
                     {/* Time */}
                     <label htmlFor="res-time"><h3>Choose time<sup>*</sup></h3></label>
@@ -116,6 +118,8 @@ export default function BookingForm({ availableTimes, dispatch }) {
                         id="res-time"
                         name="res-time"
                         required
+                        aria-required="true"
+                        aria-live="polite"
                     >
                         {(availableTimes || []).map((time, index) => (
                             <option key={index} value={time}>
@@ -135,6 +139,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                             setFirstName(e.target.value);
                         }}
                         required
+                        aria-required="true"
                     />
                     {/* Last Name */}
                     <label htmlFor="lName"><h3>Last Name<sup>*</sup></h3></label>
@@ -147,6 +152,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                             setLastName(e.target.value);
                         }}
                         required
+                        aria-required="true"
                     />
                     {/* Email */}
                     <label htmlFor="email"><h3>Email<sup>*</sup></h3></label>
@@ -159,6 +165,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                             setEmail(e.target.value);
                         }}
                         required
+                        aria-required="true"
                     />
                     {/* Phone Number */}
                     <label htmlFor="phone"><h3>Phone Number (Optional)</h3></label>
@@ -185,7 +192,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
                     />
                     <br /><br />
                     {/* Submit */}
-                    <button>
+                    <button aria-label="Submit to make your reservation">
                         <input
                             type="submit"
                             value="Make your reservation"

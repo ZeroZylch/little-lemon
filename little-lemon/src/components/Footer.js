@@ -8,7 +8,7 @@ function Footer() {
                 <img src={logo} alt="Little Lemon logo" />
             </div>
             <div className="FooterSection">
-                <nav>
+                <nav aria-label="Footer navigation" className="FooterNav">
                     <ul>
                         <li><h3>Doormat Navigation</h3></li>
                         <li><Link to="/">Home</Link></li>

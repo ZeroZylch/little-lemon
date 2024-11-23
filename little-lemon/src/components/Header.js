@@ -8,7 +8,7 @@ export default function Header() {
             <Link to="/">
                 <img src={logo1} alt="Little Lemon logo" />
             </Link>
-            <nav>
+            <nav aria-label="Main navigation">
                 <div className="burger">
                     <img src={burgerIcon} alt="burger icon" />
                 </div>

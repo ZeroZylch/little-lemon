@@ -60,7 +60,7 @@ export default function Main() {
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing
                                 elit borb galandibap skibidi beeboo babow shabambda
                                 clu</p>
-                            <button><Link to="/bookingform">Reserve a table</Link></button>
+                            <button aria-label="Reserve a table"><Link to="/bookingform">Reserve a table</Link></button>
                         </div>
                         <div>
                             <img src={restaurantFood} alt="Chef holding plate of bruschetta" />
