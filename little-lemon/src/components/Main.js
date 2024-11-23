@@ -1,4 +1,5 @@
 import BookingForm from './BookingForm.js';
+import ConfirmedBooking from './ConfirmedBooking.js';
 import Highlights from './Highlights.js';
 import Testimonials from './Testimonials.js';
 import About from './About.js';
@@ -43,8 +44,14 @@ export default function Main() {
                         />
                     }
                 />
+                <Route
+                    path="/confirmedbooking"
+                    element={
+                        <ConfirmedBooking />
+                    }
+                />
             </Routes>
-            {location.pathname !== '/bookingform' && (
+            {location.pathname !== '/bookingform' && location.pathname !== '/confirmedbooking' && (
                 <>
                     <div className="Hero">
                         <div className="HeroLeft">

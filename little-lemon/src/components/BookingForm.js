@@ -1,6 +1,7 @@
 import restaurant from '../assets/restaurant.jpg';
 import { useState } from 'react';
 import { submitAPI, fetchAPI } from '../api/Api.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function BookingForm({ availableTimes, dispatch }) {
     const [guests, setGuests] = useState("");
@@ -11,6 +12,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [diet, setDiet] = useState("");
+    const navigate = useNavigate();
 
     const clearForm = () => {
         setGuests("");
@@ -22,6 +24,7 @@ export default function BookingForm({ availableTimes, dispatch }) {
         setPhone("");
         setDiet("");
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const selectedTime = e.target['res-time'].value;
@@ -38,19 +41,23 @@ export default function BookingForm({ availableTimes, dispatch }) {
         };
 
         const isSubmitted = submitAPI(formData);
+
         if (isSubmitted) {
             alert("Reservation complete!");
             dispatch({ type: 'REMOVE_TIME', payload: { date, time: selectedTime } });
             clearForm();
+            navigate('/confirmedbooking');
         } else {
             alert("Error submitting the reservation. Please try again.");
         }
     };
+
     const handleDateChange = (e) => {
         const selectedDate = new Date(e.target.value);
         setDate(e.target.value);
         dispatch({ type: 'SET_TIMES', payload: fetchAPI(selectedDate) });
     };
+
     return (
         <>
             <div className="Reserve">
